@@ -54,4 +54,21 @@
         kscan = <&kscan0>;
         transform = <&default_transform>;
     };
+
+    // Rotary encoder EC11 (turning the knob = volume).
+    // A -> P1.04 (D8), B -> P1.06 (D9), middle pin (C) -> GND.
+    // The push button of the encoder is part of the matrix (row 0, column 4).
+    knob: encoder_knob {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "okay";
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&knob>;
+        triggers-per-rotation = <20>;
+    };
 };
