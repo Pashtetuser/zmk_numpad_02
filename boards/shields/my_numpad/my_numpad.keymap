@@ -14,6 +14,9 @@
                 &kp F16  &kp KP_N1    &kp KP_N2     &kp KP_N3
                 &kp F17  &kp KP_N0    &kp KP_DOT    &kp KP_ENTER
             >;
+
+            // Knob rotation: clockwise = volume up, counter-clockwise = volume down.
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
